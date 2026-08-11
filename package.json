@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.19.2",
+    "@tailwindcss/postcss": "^4",
     "bcryptjs": "^3.0.3",
     "framer-motion": "^13.0.0",
     "lucide-react": "^1.28.0",
@@ -22,18 +23,17 @@
     "next-auth": "^5.0.0-beta.32",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "tailwindcss": "^4",
     "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.6",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^15.5.9",
     "prisma": "^6.19.2",
-    "tailwindcss": "^4",
     "tsx": "^4.23.8",
     "typescript": "^5"
   },
