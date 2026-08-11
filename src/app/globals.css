@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  --background: #08080a;
+  --surface: #111115;
+  --card: #181820;
+  --card-hover: #22222e;
+  --foreground: #f0f1f5;
+  --muted: #9496a6;
+  --line: rgba(255, 255, 255, 0.08);
+  --accent: #ff3b5c;
+  --accent-glow: rgba(255, 59, 92, 0.25);
+  --status-available: #10b981;
+  --status-monitoring: #00f5d4;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-status-available: var(--status-available);
+  --color-status-monitoring: var(--status-monitoring);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+* { box-sizing: border-box; }
+html { background: var(--background); scroll-behavior: smooth; color-scheme: dark; }
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+::selection { background: var(--accent); color: white; }
+
+.title-font { font-family: var(--font-display), sans-serif; letter-spacing: 0.02em; }
+.card-shade { background: linear-gradient(180deg, rgba(8, 8, 10, 0) 0%, rgba(8, 8, 10, 0.7) 60%, rgba(8, 8, 10, 0.98) 100%); }
+.glass-panel { background: rgba(17, 17, 21, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--line); }
+.glass-header { background: rgba(8, 8, 10, 0.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+@keyframes signal-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.75); }
+}
+.signal-pulse { animation: signal-pulse 2s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
