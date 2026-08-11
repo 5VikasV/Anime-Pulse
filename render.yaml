@@ -3,7 +3,7 @@ services:
   - type: web
     name: anime-pulse-web
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: npm ci && npm run build
     startCommand: npm run db:deploy && npm start
     envVars:
@@ -24,35 +24,10 @@ services:
       - key: CRON_SECRET
         generateValue: true
 
-  # 2. Scheduled Cron Job Service (Release Pipeline)
-  - type: cron
-    name: anime-pulse-scheduler
-    runtime: node
-    plan: starter
-    schedule: "*/5 * * * *"
-    buildCommand: npm ci && npx prisma generate
-    startCommand: npm run scheduler
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: DATABASE_URL
-        fromDatabase:
-          name: anime-pulse-db
-          property: connectionString
-      - key: DATA_ENCRYPTION_KEY
-        fromService:
-          type: web
-          name: anime-pulse-web
-          envVarKey: DATA_ENCRYPTION_KEY
-      - key: WATCHMODE_API_KEY
-        fromService:
-          type: web
-          name: anime-pulse-web
-          envVarKey: WATCHMODE_API_KEY
-
 databases:
-  # 3. Managed PostgreSQL Database Resource
+  # 2. Managed PostgreSQL Database Resource
   - name: anime-pulse-db
     databaseName: anime_pulse
     user: anime_pulse
-    plan: starter
+    plan: free
+
